@@ -1,13 +1,12 @@
 require('dotenv').config();
 
 const express = require('express'),
-    session = require('express-session'),
-    FileStore = require('session-file-store')(session);
-    passport = require('passport'),
-    es6Renderer = require('express-es6-template-engine'),
-    path = require('path'),
-    cookieParser = require('cookie-parser'),
-    logger = require('morgan');
+  session = require('express-session'),
+  FileStore = require('session-file-store')(session),
+  es6Renderer = require('express-es6-template-engine'),
+  path = require('path'),
+  cookieParser = require('cookie-parser'),
+  logger = require('morgan');
 
 const app = express();
 
@@ -21,21 +20,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-    store : new FileStore({path : './sessions'}),
+app.use(
+  session({
+    store: new FileStore({ path: './sessions' }),
     secret: process.env['SESSION_SECRET'],
     resave: false,
     saveUninitialized: true
-}));
-
-// Initialize Passport.js
-require('./config/passport')(passport);
-app.use(passport.initialize());
-app.use(passport.session());
+  })
+);
 
 // Define our routes...
 const indexRouter = require('./routes/index'),
-    usersRouter = require('./routes/users')(app, express, passport);
+  usersRouter = require('./routes/users')(app, express);
 
 // Tell the app what to do with the route files...
 app.use('/', indexRouter);
