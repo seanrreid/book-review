@@ -31,10 +31,12 @@ app.use(
 
 // Define our routes...
 const indexRouter = require('./routes/index'),
-  usersRouter = require('./routes/users')(app, express);
+  usersRouter = require('./routes/users'),
+  booksRouter = require('./routes/books');
 
 // Tell the app what to do with the route files...
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/books', booksRouter);
 
 module.exports = app;

@@ -1,9 +1,6 @@
 <section class="section">
     <div class="clearfix">
-        <p>${parkData.address}</p>
-        <figure class="image">
-            <img src="${parkData.picture}"/>
-        </figure>
+        <p>BOOK DATA GOES HERE</p>
     </div>
     <div class="clearfix">
         <ul style="margin-top: 16px;">
@@ -49,7 +46,7 @@
                 </div>
             </div>
             <input type="hidden" name="user_id" value=${user_id} />
-            <input type="hidden" name="park_id" value=${parkData.id} />
+            <input type="hidden" name="park_id" value=${bookData.id} />
             <button class="button is-primary" type="submit">Submit Review</button>
         </form>
         ` : `<p>You are NOT logged in</p>`}

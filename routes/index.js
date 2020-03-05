@@ -3,11 +3,11 @@ const express = require('express'),
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('template', { 
+  res.render('template', {
     locals: {
       is_logged_in: req.session.is_logged_in,
       first_name: req.session.first_name,
-      title: 'Home Page'
+      title: `BOOOKS!!!`
     },
     partials: {
       partial: 'partial-index'
